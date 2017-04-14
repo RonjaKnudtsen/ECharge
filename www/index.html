@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:; maps.google">-->
+<!--
+<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://www.google.com">-->
+
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+        <title>eCharge</title>
+
+        <!--Compiled css including bootstrap-->       
+        <link href="css/style.css" rel="stylesheet">
+        
+        <script type="text/javascript" src="cordova.js" ></script>
+
+        <!--Bower components-->
+		<script src="bower_components/angular/angular.min.js"></script>
+		<script src="bower_components/ngCordova/dist/ng-cordova.min.js"></script>
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>		
+        <script src="bower_components/angular-route/angular-route.min.js"></script>
+		<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>	
+        <script src="bower_components/geofire/dist/geofire.min.js"></script>          
+        <script src="bower_components/ngmap/build/scripts/ng-map.min.js"></script>
+        <!--  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"> -->
+        
+        <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+
+        <!-- Should be replaced with a local repo:-->
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+        <!-- AngularFire -->
+        <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+
+
+        <!-- Controllers and services
+
+            1 Controllers communicate between the view and the backend/services.
+            2 The services are connected with firebase and can access the content that is required.
+            
+            The app.js bootstraps the app, sets up the states and handles dependencies. 
+            
+            database.services initiates a connection to the database that then can be used by all states. 
+            
+            notification.services uses firebase cloud messaging to manage phone push notifications.
+
+            authentication.services handles login/logout/registration of users, and handles promises so the users cant access content without an account. If a user is not logged in it will be redirected to a login/register form
+
+            menu.directive is an Angular directive which is injected into all the states and allows the users to toggle between states.  
+        -->
+
+        <script src="app/app.js"></script>
+        <script src="app/database.services.js"></script>
+        <script src="app/notification.services.js"></script>
+
+        <script src="app/authentication.service.js"></script>  		
+		<script src="app/menu.directive.js"></script>     
+        <script src="app/notification.directive.js"></script>
+
+        <!--Other parts of the app 
+            Each of the folder under "/app" is associated with a state. 
+            
+            The Map state gives you a map, and all map services contains and all functions associated with the map, like get nearby, getlocation etc.
+            When the map gets it stations by search or geoloaction it generates a list of stations. And when opened activates the station state.   
+
+            The station contains information about the charging station and the charging stations' charging points.
+            Substates of station includes: comments and checkin.
+
+            The user state can be accessed from the menu and gives information and statistic about the user. 
+            Substates of user includes: friends and badges.
+            The friend substate also allows users to search for other friends/users.
+            Badges allows the user to also see locked badges.
+
+        -->
+        <script src="app/map/map.controller.js"></script>
+        <script src="app/map/map.services.js"></script>
+
+        <script src="app/station/station.services.js"></script>
+        <script src="app/station/station.controller.js"></script>
+
+        <script src="app/user/user.controller.js"></script>
+        <script src="app/user/user.services.js"></script>
+
+
+
+    </head>
+    <body ng-app="echarge">
+
+        <!-- Notification directive which displays notifications.-->
+        <notification></notification>
+
+		<!-- RENDER THE VIEW -->
+		<div ui-view>
+		</div>
+
+
+    </body>
+</html>

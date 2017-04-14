@@ -1,0 +1,75 @@
+<!-- http://stackoverflow.com/questions/16964466/angular-animations-and-phonegap-not-running-on-mobile-->
+
+<menu visible="visible" ng-if="openmenu">
+    <menu-item ui-sref-active="active" ng-repeat="menuitem in menu">
+	    <a  ui-sref="{{menuitem.route}}">
+	    	<i class="fa {{menuitem.faicon}}" aria-hidden="true"></i>{{menuitem.heading}}
+	    </a>
+    </menu-item>
+    
+    <div class="submenu">
+    	<menu-item ui-sref-active="active" ng-repeat="menuitem in submenu">
+	    	<a  ui-sref="{{menuitem.route}}">
+	    		<i class="fa {{menuitem.faicon}}" aria-hidden="true"></i>{{menuitem.heading}}
+	    	</a>
+	    </menu-item>
+    </div>
+</menu>
+
+<!-- A transparent white overlay behind the menu -->
+<menuoverlay ng-if="openmenu" ng-click="closemenu()">
+</menuoverlay>
+
+
+<navheader class="{{themecolor}}">
+    <!-- Show only closebutton in substates.-->
+	<div class="right" ng-show="type=='substate'" ng-click="closeState()" ><i class="fa fa-times" aria-hidden="true"></i></div>
+
+	<!-- Only maps have sliders -->
+	<div ng-if="type=='map'" class="right filtericon">       
+	    <i class="fa fa-sliders" aria-hidden="true"></i>
+	</div>
+
+
+	<div class="left">
+
+		<!-- Substates are not going to have a menu button, they have a close button -->
+	    <div ng-hide="type=='substate'" class="menubutton" ng-click="openthismenu()" ><i class="fa fa-bars" aria-hidden="true"></i></div>
+
+	    <p ng-if="name">{{name}}</p>
+
+	    <!-- Show only in map state -->
+	    <div ng-if="type=='map'" class="inline-searchbar">
+	        <div class="searchmenu">
+	          <input  places-auto-complete 
+	          type="text" 
+	         
+	          component-restrictions="{country:'no'}"
+	          class="form-control" 
+	          ng-model="searchword" 
+	          placeholder="{{inputfieldPlaceholder}}"
+	          on-place-changed="fromPlaceChanged()"
+	          >
+	        </div>
+
+	       	<div ng-if="directionsEnabled">
+	          <input  places-auto-complete 
+	          type="text" 
+	         
+	          component-restrictions="{country:'no'}"
+	          class="form-control" 
+	          ng-model="toDestination" 
+	          placeholder="Jeg vil reise til.."
+	          on-place-changed="toPlaceChanged()"
+	          >
+
+	        </div>
+	        
+	    </div>
+
+	</div> 
+</navheader>
+
+<ul class="nav nav-tabs nav-justified {{themecolor}}" ng-if="tabs">
+  <li role="presentation" ng-click="changeTab(tab.name)"ng-repeat="tab in tabs" ng-class="{ 'active': tab.active }"><a ui-sref="{{tab.route}}">{{tab.heading}}</a></li>
+</ul>

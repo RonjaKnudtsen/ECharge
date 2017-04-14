@@ -1,0 +1,8 @@
+<div class="modal-body">
+	<h4>{{message.title}}</h4>
+	<p>{{message.body}}</p>
+	<button type="button" class="btn btn-success" ng-click="accept()" >Ja</button>
+	<button type="button" class="btn btn-warning" ng-click="dismiss()" data-dismiss="modal">
+	Nei<span ng-if="message.type == 'queue'">, forlat køen.</span>
+	</button>
+</div>

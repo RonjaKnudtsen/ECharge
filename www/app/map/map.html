@@ -1,0 +1,78 @@
+<!-- Disabling points of interest: http://stackoverflow.com/questions/7478069/disable-point-of-interest-information-window-using-google-maps-api-v3 --> 
+
+<div map-lazy-load="https://maps.google.com/maps/api/js"
+  map-lazy-load-params="{{googleMapsUrl}}">
+
+  <top-menu set-origin="setOrigin(fromOrigin)" set-destination="setDestination(toDestination)" type="map" color="white" directions-enabled="directionsEnabled"></top-menu>
+
+
+  <div class="map_overlay">
+
+    <button ng-class="{ 'btn-primary': directionsEnabled, 'btn-default': !directionsEnabled }" ng-click="toggleDirections()"> 
+        <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i>
+        Ruteplanlegger
+    </button>
+
+    <button ng-class="{ 'btn-primary': GPSEnabled, 'btn-default': !GPSEnabled }" ng-click="toggleGPS()"> 
+      <i class="fa fa-map-marker" aria-hidden="true"></i> 
+      Bruk GPS
+    </button>
+  </div>
+  
+  <ng-map center="Norway" zoom="4" disable-default-u-i="true" >
+
+  	<custom-marker ng-if="!directionsEnabled" position="{{usermarker.lat}},{{usermarker.lng}}">
+  			<div><i class="fa fa-4x fa-map-marker mapicon" aria-hidden="true"></i></div>
+  	</custom-marker>
+
+  	<custom-marker ng-repeat="marker in chargingstations" id="cStation-marker-{{marker.key}}" on-click="showInfo(marker)" position="[{{marker.lat}},{{marker.lng}}]">
+  			<div class="customMarker"><i class="fa fa-plug mapicon" aria-hidden="true"></i></div>
+  	</custom-marker>
+
+  	<!-- the active marker changes on marker on-click ^ -->
+  	<info-window id="cStation-info-window" max-width="200">
+  			<div ng-non-bindable="" class="map_popup">
+          <div class="infoWindow_title">
+  					<h2 ng-click="openStation(activeMarker.key)">{{activeMarker.cStation.name.value}}</h2>
+          </div>
+          <div class="infoWindow_body">            
+    					<p>Avstand: <b>{{activeMarker.distance}}</b></p>
+    					<p>Antall ladestasjoner: <b>{{activeMarker.cStation.Number_charging_points.value}}</b></p>
+    					<button class="btn btn-primary" ng-click="openStation(activeMarker.key)">Mer info <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+          </div>
+  			</div>
+  	</info-window>
+
+
+    <directions 
+          draggable="false"
+          panel="directions-panel"
+          travel-mode="DRIVING"
+          origin="{{fromOrigin}}"
+          destination="{{toDestination}}"
+          suppress-markers="true">
+
+    </directions>
+
+    <custom-marker ng-if="directionsEnabled" id="start"
+      position="{{fromOrigin}}">
+     
+      <div><i class="fa fa-4x fa-map-marker mapicon" aria-hidden="true"></i></div>
+    </custom-marker>
+    <custom-marker ng-if="directionsEnabled" id="end"
+      position="{{toDestination}}">
+      
+      <div><i class="fa fa-4x fa-map-marker mapicon" aria-hidden="true"></i></div>
+    </custom-marker>
+
+
+  </ng-map>
+  
+</div>
+<!--
+<div id="directions-panel" style="width: 100%; float:left; height: 100vh; overflow: auto; padding: 0px 5px">
+-->
+
+
+<!--travel-mode="{{travelMode}}"
+          waypoints="{{wayPoints}}" -->

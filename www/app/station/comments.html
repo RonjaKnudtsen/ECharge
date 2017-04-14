@@ -1,0 +1,59 @@
+<div class="container">
+
+	<center ng-hide="commentState">
+		<br/>
+		<button ng-click="toggle_comment()" class="btn btn-lg btn-full btn-default">Skriv ny kommentar</button></center>
+	<div ng-show="commentState">
+		<h4>Skriv ny kommentar</h4>
+		<form>
+			<div class="form-group">
+				<textarea ng-model="newComment.comment" class="form-control" placeholder="Skriv en kommentar til ladestasjonen">
+				</textarea> 
+			</div>
+
+			<div class="form-group">
+				<button  ng-click="add_comment(newComment)" class="btn btn-primary btn-lg btn-default">Publiser</button>
+				<button  ng-click="toggle_comment()" class="btn btn-default btn-lg">Lukk</button>
+			</div>
+		</form>
+	</div>
+	<hr>
+	<!-- If no comments, help with onboarding
+	https://medium.com/rareview/ui-design-for-empty-states-zero-data-and-on-boarding-264cdb92826e#.rqcag784e -->
+	<div ng-if="commentEmpty">
+		<h4>Ingen kommentarer</h4>
+		<div class="onboarding">
+			<i class="fa fa-hand-o-up fa-2x" aria-hidden="true"></i>
+			<p>Skriv en kommentar på ladestasjonen ved å fylle inn feltet over og trykk "publiser"</p>
+
+		</div>
+	</div>
+
+	<h4 ng-if="!commentEmpty">Kommentarer</h4>
+	<ul class="commentContainer">
+		<li class="comment" ng-repeat="comment in comments">
+			
+				<div class="commentAvatar">
+					<a ui-sref="profile({userID: comment.userInfo.uid})">
+						<img src="https://placehold.it/25x25">
+					</a>
+				</div>
+				<div class="author">
+					<p><a ui-sref="profile({userID: comment.userInfo.uid})">
+						{{comment.userInfo.username}}
+					</a></p>
+				</div>
+			
+
+			<div class="commentText">
+				
+				<p class="text">{{comment.comment}}</p>
+				<p class="date">{{comment.date | date:short }}</p>
+				<!-- Eventuelle like buttons etc -->
+			
+			</div>
+				
+		</li>
+	</ul>
+</div>
+

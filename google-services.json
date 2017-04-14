@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "882540270930",
+    "firebase_url": "https://echarge-1472558145387.firebaseio.com",
+    "project_id": "echarge-1472558145387",
+    "storage_bucket": "echarge-1472558145387.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882540270930:android:9f3339ae9f6dae05",
+        "android_client_info": {
+          "package_name": "io.cordova.echarge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882540270930-n386gnvlcg4458r00e6jjno57imdaq9t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAi44UXxjw5Tv-N2WlVjl6i1v05pTl1xyA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

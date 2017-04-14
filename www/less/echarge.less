@@ -1,0 +1,653 @@
+// -- Global (Global classes)
+::-webkit-scrollbar { 
+    display: none; 
+
+}
+.margintop{
+	margin-top:20px;
+}
+.thumbnail.air{
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+centeredcontainer{
+	text-align: center;
+	margin: 0 auto;
+}
+.btn-150{
+	min-width: 150px;
+}
+.btn-lg{
+	font-size: 16px;
+}
+.btn-full{
+	width:100%;
+}
+.btn-reduced{
+	background-color: #eaeaea;
+}
+
+img.thumbnail{
+	max-width: 100%;
+}
+
+.leftfloat{
+	float:left;
+}
+
+.rightfloat{
+	float:right;
+}
+
+// -- Overwrite bootstrap classes
+//Turns tabs border-radius upside down, 
+//Removes border
+//adds correct color.
+
+.nav-justified > li {
+    display: table-cell; 
+    width: 1%;
+    margin-left: 2px;
+}
+.nav-justified > li.active {
+    display: table-cell; 
+    width: 1%;
+    border-top: none;
+}
+.nav-tabs.nav-justified>li>a{
+	border-radius: 0 0 6px 6px;
+	border: 0;
+}
+
+.nav-tabs.nav-justified>.active>a, .nav-tabs.nav-justified>.active>a:hover, .nav-tabs.nav-justified>.active>a:focus{
+	border: 0;
+	border-radius: 0 0 6px 6px;
+}
+.nav-tabs.nav-justified>.active>a{
+	background-color: #fff;
+}
+.nav-tabs.nav-justified{
+	background-color: @gray-lighter;
+}
+.nav-tabs.nav-justified{
+	font-size: 14px;
+}
+.nav>li>a{
+	padding: 5px 10px;
+}
+//Colors
+.nav-tabs.nav-justified.orange>li>a:hover{
+	background-color: @orange-darker;
+}
+.nav-tabs.nav-justified.green>li>a:hover{
+	background-color: @green-darker;
+}
+.nav-tabs.nav-justified.green{
+	background-color: @green-dark;
+}
+.nav-tabs.nav-justified.orange{
+	background-color: @orange-dark;
+}
+.nav-tabs.orange a, .nav-tabs.green a{
+	color: @gray-lighter;
+}
+.nav-tabs.nav-justified.green>.active>a, .nav-tabs.nav-justified.green>li>a:focus{
+	background-color: @brand-primary;
+	color: #fff;
+}
+.nav-tabs.nav-justified.orange>.active>a, .nav-tabs.nav-justified.orange>li>a:focus{
+	background-color: @orange;
+	color: #fff;
+}
+//doesent really work with white. 
+
+
+.onboarding{
+	background-color: @purple-bright;
+	font-family: @helptext;
+	color: #fff;
+	font-style:italic;
+	padding: 20px;
+	border-radius:20px;
+	margin: 10px 0;
+	p{
+		font-size: 18px;
+	}
+	i.fa{
+		float:right;
+	}
+	//Different font style
+}
+
+
+
+// -- Comments
+ul.commentContainer{
+	list-style-type: none;
+	display: block;
+	padding: 0;
+}
+ul.commentContainer li.comment{
+	display:block;
+	overflow: auto;
+	margin: 15px 0;
+
+	.topbar{
+		width:100%;
+		height: 25px; //same as the image
+		margin: 5px 0;
+	}
+
+	.commentAvatar{
+		float: left;
+		display:inline;
+		margin-right: 10px;
+	}
+	.commentAvatar img{
+		max-width: 25px;
+
+	}
+
+	.commentText{
+		margin-left:35px
+	}
+
+	.commentText p.text{	
+		border-radius: 10px;
+		color: #fff;
+		padding: 10px;
+		margin-bottom:0px;
+		display:inline-block;
+		background-color: @purple; 
+	}
+	.author p{
+		font-weight:bold;
+		margin-bottom:5px
+	}
+	.author p a{
+		color: @gray-dark;
+	}
+	.author p a:hover{
+		color: @gray;
+	}
+	.commentText p.date{
+		margin-top: 5px;
+		font-style: italic;
+		font-size: 12px;
+		margin-bottom: 0px;
+	}
+}
+
+
+ul.commentContainer li.comment:nth-child(odd){
+	.commentText p.text{
+		background-color: @orange;
+	}
+}
+
+
+
+
+
+// --  Map - (Charging station map)
+
+
+
+
+ng-map {
+    width: 100%;
+    height: 89vh;
+    background-color: grey;
+
+}
+
+.customMarker{
+	margin: 0;
+	margin-top:20px;
+}
+
+.fa-plug.mapicon{
+	padding: 10px;
+	border-radius: 15px;
+	background-color: @darken-primary;
+	color: #fff;
+	//border: solid 0.5px @darken-primary;
+}
+
+.fa-map-marker.mapicon{
+	color: #84496e;
+}
+
+.gm-style-iw {
+ //  width: 350px !important;
+  // top: -20px !important;
+   left: 0 !important;
+   border-radius: 2px 2px 0 0;
+}
+.map_popup{
+	width: 90%;
+	margin: 5px 0 0 20px;
+	.infoWindow_title h2{
+		font-size: 15px;
+		font-weight: bold;
+		margin-top:0px;
+		color: @darken-primary;
+	}
+	p{
+		font-size: 14px;
+	}
+}
+
+
+.map_overlay{
+	z-index: 500;
+	position: absolute;
+	margin: 20px;
+	margin-bottom: 25px;
+	bottom: 0;
+	right: 0;
+}
+//inherit bootstrap classes.
+.map_overlay button{
+	font-weight: bold;
+	.btn;
+//	.btn-default;
+}
+/*.map_overlay button .active{
+	.btn-primary;
+}
+.map_overlay button .disabled{
+	.btn-warning;
+}*/
+
+
+.sticker{
+	text-align: center;
+	margin: 15px 5px;
+	p{
+		font-size: 15px;
+		margin:0px;
+
+	}
+		i{
+		font-size: 34px;
+		margin: 20px;
+	}
+
+}
+
+// -- Charging station info
+//Icons that are not font awesome: 
+.iconList{
+	margin-bottom: 10px;
+}
+.infoIcon{
+	width: 10%;
+	margin-right:5%;
+	float:left;
+	margin-top: -5px;
+	color: #000;
+}
+.infoInfo{
+	width: 90%;
+	margin-left: 15%;
+
+}
+
+/*
+availability"fa fa-users"
+location: fa fa-map-marker
+owned_by "fa fa-building"
+timeLimit : fa fa-hourglass-end
+
+Creative commons:
+open24: https://thenounproject.com/search/?q=24%20hours%20clock&i=589139
+realtime: https://thenounproject.com/search/?q=clock%20check&i=743075
+
+*/
+i.realtime{
+	background: url(../img/realtime_Px.svg) no-repeat 100% 100%;
+    background-size: 28px 28px;
+    height: 28px;
+    width: 28px;
+    display: inline-block;
+    margin-bottom: -12px;
+    margin-top: 2px;
+    margin-left:-2px
+}
+i.open24{
+	background: url(../img/24_hours_poh.svg) no-repeat 100% 100%;
+    background-size: 32px 32px;
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+    margin-bottom: -12px;
+    margin-top: -2px;
+    margin-left: -2px
+}
+i.fixedcable{
+    background: url(../img/fixed_cable_stefan.svg) no-repeat 100% 100%;
+    background-size: 28px 32px;
+    height: 32px;
+    width: 28px;
+    display: inline-block;
+    margin-bottom: -12px;
+    margin-top: 5px;
+}
+i.Speed{
+	background: url(../img/charging_speed_cresnar.svg) no-repeat 100% 100%;
+    background-size: 30px 30px;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    margin-bottom: -12px;
+    margin-top: 5px;
+	
+}
+i.location{
+	&:before{
+		content: @fa-var-map-marker;
+		.fa;
+	}
+}
+i.owned_by{
+	&:before{
+		content: @fa-var-building;
+		.fa;
+	}
+}
+i.timeLimit{
+	&:before{
+		content: @fa-var-hourglass-end;
+		.fa;
+	}
+}
+i.availability{
+	&:before{
+		content: @fa-var-users;
+		.fa;
+	}
+}
+
+//Extend font awesome icons
+i.stickericon{
+	&:before{
+		content: @fa-var-map-marker;
+		.fa;
+	}
+
+}
+i.checkin{
+	 &:before {
+        content: @fa-var-user; 
+        .fa; 
+    }
+}
+i.accessibility{
+	 &:before {
+        content: @fa-var-credit-card-alt; 
+        .fa; 
+    }
+}
+i.paymentmethod{
+	&:before {
+        content: @fa-var-credit-card-alt; 
+        .fa; 
+    }
+}
+i.chargemode{
+	 &:before {
+        content: @fa-var-car; 
+        .fa; 
+    }
+}
+i.chargingcapacity{
+	 &:before {
+        content: @fa-var-bolt; 
+        .fa; 
+    }
+}
+i.connector{
+	 &:before {
+        content: @fa-var-plug; 
+        .fa; 
+    }
+}
+
+i.manufacturer{
+	 &:before {
+        content: @fa-var-car; 
+        .fa;
+    }
+}
+i.reservable{
+	 &:before {
+        content: @fa-var-calendar-check-o; 
+        .fa; 
+    }
+}
+i.vehicletype{
+	 &:before {
+        content: @fa-var-car;
+        .fa; 
+    }
+}
+
+// -- Modifying bootstrap classes
+
+.list-group{
+	font-size: 16px;
+}
+.list-group-item{
+	border: none;
+	background-color: transparent;
+	i{
+		font-size: 24px;
+		margin-right: 10px;
+	}
+}
+.gridborder{
+	//border: 1px solid #ddd;
+	//background-color: #fff;
+}
+.container .list-group{
+	margin-right: -15px;
+	margin-left: -15px;
+}
+.list-group-item:first-child, .list-group-item:last-child{
+	//border-radius: 0;
+}
+
+// --  Navigation - (Top menu bar)
+
+.navbar{
+	max-height: 15vh;
+}
+
+
+navheader{
+	min-height: 11vh;
+	width: 100%;
+	background-color: #fff;
+	color: @brand-primary;
+	display:block;
+	font-size: @font-size-h3;
+	padding: 5px 10px;
+
+	.menubutton{
+		float:left;
+		width:10%;
+	}
+
+	.filtericon{
+		width:10%;
+	}
+
+	.fa{
+		//top right bottom left
+		margin: 10px 5px 2px 5px;
+	}
+
+	.searchmenu{
+		margin-bottom: 5px;
+	}
+
+	.input-group-btn .fa{
+		margin: 0;
+	}
+
+	.inline-searchbar{
+		width: 80%;
+		display: inline-block;
+		padding: 5px 10px 5px 5px;
+
+		.btn{
+			padding: 6.5px 12px;
+		}
+
+	}
+	.form-control{
+		height: 35px;
+	}
+
+	.form-group{
+		display:inline;	
+		margin: 0; //Specify margin in navheader.
+	}
+	.left{
+		//display:block;
+		//float:left;
+	}
+	.right{
+		display:block;
+		float:right;
+	}
+	p{
+		font-size: 18px;
+		margin: 10px 0 5px 15px;
+		display:inline-block;
+		max-width: 80%;
+		font-weight: bold;
+
+	}
+
+}
+
+navheader.green{
+	background-color: @brand-primary;
+	color: #fff;
+}
+navheader.white{
+	background-color: #fff;
+	color: @brand-primary;
+}
+navheader.purple{
+	background-color: @purple;
+	color: #fff;
+}
+navheader.orange{
+	background-color: @orange;
+	color: #fff;
+}
+
+// -- Navigation slide in menu
+menuoverlay{
+	background-color: #fff;
+	position: absolute;
+	z-index: 500;
+	width:100%;
+	height: 100vh;
+	top: 0px;
+	margin: 0px;
+	opacity: 0.4;
+}
+//menuoverlay animations (fade in)
+menuoverlay.ng-enter{
+	opacity: 0;
+	-webkit-transition: 0.3s ease all; /* Chrome */
+	transition: 0.3s ease all;
+}
+menuoverlay.ng-enter.ng-enter-active{
+	opacity: 0.4;
+}
+menuoverlay.ng-leave{
+	transition:0.3s linear all;
+  	opacity:1;
+}
+
+menuoverlay.ng-leave.ng-leave-active {
+  opacity:0;
+}
+menu {
+	//opacity: 1;
+	position: absolute;
+    height: 100vh;
+    //Starting position(75% of screen width).
+    top: 0px;
+    left: 0;
+    background-color: @purple;
+    color: #fff;	
+    margin: 0px;
+    z-index: 999;
+    width: 75%;
+    padding: 10px 10px 20px 10px;
+
+    a{
+    	color: #fff;
+    }
+    a:hover{
+    	color: @purple-dark;
+    }
+    i.fa{
+    	position:absolute;
+    	left: 20px;
+    	margin-top: 5px;
+    }
+    hr{
+    	border: 1px solid @purple-dark;
+    }
+}
+//Slide in animations. 
+menu.ng-enter{
+	left: -75%;
+	transition:0.3s ease all;
+}
+menu.ng-enter.ng-enter-active{
+	left: 0;
+}
+
+menu.ng-leave{
+	transition:0.3s ease all;
+	left: 0;
+}
+
+menu.ng-leave.ng-leave-active {
+	left: -75%;
+}
+
+
+
+menu-item.active{
+	a{
+		color: @purple-bright;
+	}
+}
+
+menu-item {
+	margin: 20px;
+	margin-left: 50px;
+    display: block;
+    font-size: 24px;
+}
+.submenu{
+	position: absolute;
+	bottom: 10px;
+	left:0px;
+	right:0px;
+	menu-item{
+		font-size: 20px;		
+	}
+}
+
+
+

@@ -1,0 +1,34 @@
+{
+  "name": "echarge",
+  "version": "1.0.0",
+  "description": "eCharge - Sharing is caring",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RonjaKnudtsen/ECharge.git"
+  },
+  "keywords": [
+    "AngularJS",
+    "ngCordova",
+    "bootstrap"
+  ],
+  "author": "RonjaKnudtsen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RonjaKnudtsen/ECharge/issues"
+  },
+  "homepage": "https://github.com/RonjaKnudtsen/ECharge#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-less": "^1.4.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "jit-grunt": "^0.10.0",
+    "grunt-express": "^1.0.0"
+  },
+  "dependencies": {
+    "firebase-admin": "^4.1.0"
+  }
+}

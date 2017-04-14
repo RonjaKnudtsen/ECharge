@@ -1,0 +1,61 @@
+<div class="container">
+	<h4>Status på ladestasjonen</h4>
+
+	<!-- TODO: Når ingen er sjekket inn ser det rart ut at det er kø, da må vi fjerne køen på et vis. -->
+	<!-- Når man sjekker inn må man ta personen ut av køen! -->
+	<div ng-show="checkedIn > 0">
+		<p><i class="fa fa-plug" aria-hidden="true"></i> <b>{{checkedIn}}</b> person<span ng-show="checkedIn> 1">er</span> er sjekket inn.</p><!-- på ladestasjonens {{max_checkin}} ladeplasser</p>-->
+	</div>
+	<div ng-show="checkedIn < 1">
+		<p>Ingen sjekket inn.</p>
+		<div class="onboarding">
+			<p>For å sjekke inn trykk "sjekk inn" på knappen under, og du vil motta varsel når noen stiller seg i kø.</p>
+		</div>
+	</div>
+	<div ng-show="inQueue > 0">
+		<p><i class="fa fa-car" aria-hidden="true"></i> Det står {{inQueue}} person<span ng-show="inQueue > 1">er</span> i kø for å lade.</p>
+	</div>
+
+	<div ng-show="userIsInQueue">
+		<h4>Du står i kø for å lade</h4>
+		<p>Har du fått ladeplass? Vennligst sjekk inn. Hvis du ikke vil stå i kø, forlat køen.</p>
+		<button ng-click="checkInUser()" class="btn btn-primary btn-lg">Sjekk inn</button>
+		<button ng-click="leaveQ()" class="btn btn-warning btn-lg">Forlat kø</button>
+	</div>
+	<div ng-show="!userIsCheckedIn && !userIsInQueue">
+		<h4>Sjekk inn</h4>
+		<p>Hvis du <b>lader bilen din</b> her vennligst sjekk inn</p>
+		<button ng-click="checkInUser()" class="btn btn-primary btn-lg">Sjekk inn</button>
+		<!--<div ng-if="distance > 100">
+		<p>Du må være nærmere ladestasjonen og slå på GPSen for å få lov til å sjekke inn</p>
+		<button class="btn-primary btn-disabled btn-full btn-lg"></button>-->
+	</div>
+	<div ng-show="userIsCheckedIn && !userIsInQueue">
+		<h4>Sjekk ut</h4>
+		<p>Du er sjekket inn. Ønsker du å sjekke ut av ladestasjonen?</p>
+		<button ng-click="checkOutUser()" class="btn btn-warning btn-lg">Sjekk ut </button>
+	</div>
+
+	<!-- If user is not in queue, not checked in, and there is more than one person checked in -->
+	<div ng-show="checkedIn > 0 && !userIsCheckedIn && !userIsInQueue">
+		<h4>Still deg i kø</h4>
+		<p>Hvis du ikke finner noen ledige ladestasjoner kan du stille deg i kø.</p>
+		<button ng-click="setUserInQ()" class="btn btn-primary btn-lg btn-full">Still meg i kø</button>
+	</div>
+
+
+	<br/>
+
+	<h5>Hva betyr det å sjekke inn og å stille seg i kø?</h5>
+	<p>Hvis du lader bilen din på denne ladestasjonen ønsker vi at du sjekker inn i appen.</p>
+	<p>Når du er sjekket inn vil du få varsel på mobilen når det er fullt og noen stiller seg i kø for å lade</p>
+
+	<!--Når det blir fullt på ladestasjonen vil du få mulighet til å stille deg i kø, da vil den personen som har stått lengst på stasjonen få push notifikasjon med forespørsel om å bytte med deg, hvis hun godtar dette du få beskjed om dette.<br/> </p>-->
+
+<!--	<p>Du kan maksimalt være 100 meter unna ladestasjonen for å sjekke inn, og maksimalt 500 meter unna ladestasjonen for å stille deg i kø.</p> -->
+
+	<p>Hvis du ønsker å sjekke inn uten varsling kan du slå av dette i innstillingene </p>
+
+	<br/>
+
+</div>

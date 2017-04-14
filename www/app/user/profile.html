@@ -1,0 +1,85 @@
+<top-menu name="{{user.username}}" themecolor="orange" type="superstate" tabs="tabs"></top-menu>
+<!-- The ui view will be replaced by the substate -->
+<div ui-view> 
+	<!-- <tabs></tabs>  Tabs: Profil, Belønninger, venner -->
+	<div class="container">
+		<div class="row margintop">
+			<div class="col-xs-12">
+				<a href="#" class="thumbnail leftfloat air">
+					<img src="http://placehold.it/75x75">
+				</a>
+			
+				<p>Rank: {{user.rank}}</br>
+				Sist sjekket inn: aldri</p>
+
+				<button class="btn btn-primary">Rediger profil</button>
+			</div>
+		</div>
+<!--
+
+		<div class="row">
+			<div class="col-xs-12">
+				<h2>Min elbil</h2>
+				<img src="http://placehold.it/300x100" class="thumbnail">
+				<p>Tesla supermodell</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+			<h2>Belønninger </h2>
+			En grid med ng repeat og belønninger.
+			</div>
+		</div>
+		<div class="row">
+		  <div class="col-xs-4">
+		    <div class="thumbnail">
+		      <img src="http://placehold.it/50x50" alt="...">
+		      <div class="caption">
+		        <p>...</p>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="col-xs-4">
+		    <div class="thumbnail">
+		      <img src="http://placehold.it/50x50" alt="...">
+		      <div class="caption">
+		        <p>...</p>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="col-xs-4">
+		    <div class="thumbnail">
+		      <img src="http://placehold.it/50x50" alt="...">
+		      <div class="caption">
+		        <p>...</p>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="col-xs-4">
+		    <div class="thumbnail">
+		      <img src="http://placehold.it/50x50" alt="...">
+		      <div class="caption">
+		        <p>...</p>
+		      </div>
+		    </div>
+		  </div>
+		</div>-->
+
+		<h2>Statistikk</h2>
+		<p>Medlem siden: {{user.statistics.membersince}}</p>
+		<p>Antall kommentarer: {{user.statistics.commentsCount}}</p>
+
+		<p>Sjekket inn: {{user.statistics.checkedInCount}}<p>
+		<p>Byttet: {{user.statistics.qRespondCount}}<p>
+		<p>Forespurt bytte: {{user.statistics.qCount}}<p>
+		<!--<p>Profil: Offentlig/privat {{user.publicity}}</p>-->
+		Liste over ladestasjoner besøkt.
+		En tabell over annen statistikk.
+
+		<h2>Venner ({{user.friends.count}})</h2>
+		<button class="btn btn-primary">Koble til Facebook</button>
+		En grid med venner. 
+
+	</div>
+
+</div>

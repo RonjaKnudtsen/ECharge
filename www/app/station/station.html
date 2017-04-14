@@ -1,0 +1,58 @@
+<top-menu name="{{cStation.name.value}}" themecolor="green" type="substate" tabs="tabs"></top-menu>
+<!-- The ui view will be replaced by substates when entering them -->
+<div ui-view> 
+	<div class="container">
+		<!--<h1>{{cStation.name}}</h1>-->
+		<h2>Ladepunkter ({{cStation.Number_charging_points.value}})</h2>
+
+		<!-- http://stackoverflow.com/questions/8462253/how-to-get-a-picture-of-a-place-from-google-maps-or-places-api -->
+
+		<ul class="list-group">
+			<li class="list-group-item iconList" ng-repeat="info in iconlist" ng-if="info.group">
+				<div class="infoIcon">
+					<i class="{{info.key}}"></i>
+				</div>
+				<div class="infoInfo" ng-repeat="group in info.group">
+					
+					{{group.name}} ({{group.count}})
+				</div>
+			</li>
+		</ul>
+		<h2>Mer informasjon </h2>
+		<ul class="list-group">
+		<li class="list-group-item iconList" ng-repeat="(key, value) in gridInfo">
+				<div class="infoIcon">
+					<i class="{{key}}"></i>
+				</div>
+				<div class="infoInfo">
+					<b>{{value.trans}}</b>: {{value.value}}
+				</div>
+				
+			</li>
+		</ul>
+
+		<div ng-if="cStation.Description_of_location.value">
+			<h3>Beskrivelse: </h3>
+			<p>{{cStation.Description_of_location.value}}</p>
+		</div>
+		<div ng-if="cStation.Street.value">
+			<h3>Adresse</h3>
+			<p>	{{cStation.name.value}}</br>
+				{{cStation.Street.value}} {{cStation.House_number.value}}</br>
+				{{cStation.Municipality_ID.value}}</br>
+				{{cStation.City.value}}
+			</p>
+		</div>
+		<div ng-if="cStation.Contact_info.value">
+			<h3>Kontaktinformasjon</h3>
+			<p>{{cStation.Contact_info.value}}</p>
+		</div>
+	</div>
+</div>
+
+	<!-- Load switch and checkin directive
+	<switch></switch>
+	<checkin></checkin>
+
+	-->
+

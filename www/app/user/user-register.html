@@ -1,0 +1,22 @@
+<div class="container">
+	<centeredcontainer>
+	<br>
+	<h2>Registrer ny bruker</h2>
+	<br>
+	<form>
+
+		<div ng-repeat="data in registerInfo" class="form-group">
+			<input ng-model="data.input" type="{{data.inputype}}" class="form-control" placeholder="{{data.placeholder}}">
+		</div>
+
+		<br>
+
+		<div class="form-group">
+			<button  ng-click="register(registerInfo)" class="btn btn-lg btn-primary btn-150 btn-default">Registrer deg </button>
+		</div>
+		<div class="form-group">
+			<button class="btn  btn-150 btn-reduced btn-default" ng-click="goLogin()">Tilbake til login</button>
+		</div>
+	</form>
+</centeredcontainer>
+</div>
