@@ -29,8 +29,8 @@ app.controller('station-controller', function($scope, $state, $stateParams, cSta
          //append this to accessibility
          //$scope.iconlist.accessibility["payment_method"] = info["paymentmethod"], 
     });
+    
     $scope.cStation.$loaded().then(function(info){
-
         $scope.gridInfo = {
             open24 : info["Open 24h"],
             realtime : info["Real-time information"],
@@ -55,34 +55,57 @@ app.controller('map-controller', function(NgMap, $cordovaGeolocation, $state, $s
 
     //Wait for Phone to be ready:
     //Check if we already have a position. (Typically when reentering a state).
-            
     ReadyService.isReady.then(function(){
-        //Check if we have a position stored. 
-        if($scope.position){
-            centerAndGetNearby($scope.position);
-        } else {
-             //Get my pos if GPS is enabled and permission fulfilled. 
-            MapService.getMyPosLatLng().then(position => {
-                //Set gps as enabled since we recieved a successfull promise.
-                $scope.GPSEnabled = 1;
 
-                //Check if we have changed position.
-                if(!$scope.position || $scope.position.latitude != position.coords.latitude){
-                    console.log("Position is new or have changed", $scope.position, position.coords);               
+        //Wait for google (ngMap)
+        NgMap.getMap().then(function(map) {
 
-                    //Convert from cordova latlng to google map latlng
-                    var userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                    MapService.setLastPos(userLatLng);
-                    $scope.position = userLatLng;
-                    centerAndGetNearby(userLatLng);
-                }
+            //Check if we have a position stored. 
+            if($scope.position){
+                centerAndGetNearby($scope.position);                
+                console.log("FROM ORIGIN:", $scope.position);
 
-            }, function(err){
-                console.log("Could not get position", err);
-                $scope.GPSEnabled = false;
-            });  
+            } else {
+                 //Get my pos if GPS is enabled and permission fulfilled. 
+                MapService.getMyPosLatLng().then(position => {
+                    //Set gps as enabled since we recieved a successfull promise.
+                    $scope.GPSEnabled = 1;
 
-        } // end of else      
+                    //Check if we have changed position.
+                    if(!$scope.position || $scope.position.latitude != position.coords.latitude){
+                        console.log("Position is new or have changed", $scope.position, position.coords);  
+                             
+
+                        //Convert from cordova latlng to google map latlng
+                        //GOOGLE IS NOT DEFINED. 
+                        var userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                        MapService.setLastPos(userLatLng);
+                        console.log("USER LAT LNG",userLatLng);
+                        //$scope.position = {lat: userLatLng.lat(), lng: userLatLng.lng()};
+                        $scope.position = userLatLng;
+
+                        console.log($scope.positions);
+                        
+                        
+                        centerAndGetNearby(userLatLng);
+                        //$scope.fromOrigin = $scope.positions;
+
+                        console.log("FROM ORIGIN:", $scope.fromOrigin);
+                    }
+
+                }, function(err){
+                    console.log("Could not get position", err);
+                    $scope.GPSEnabled = false;
+                });  
+
+            } // end of else
+
+
+        });
+        console.log("SCOPE POSITION", $scope.position);
+
+
+              
 
     }, function(err){
         console.log("Error loading cordova: ",err);
@@ -150,8 +173,22 @@ app.controller('map-controller', function(NgMap, $cordovaGeolocation, $state, $s
 
     });
 
+    $scope.getDirectionsToStation = function(toDestination){
+        //get this from the info window which is currently open and "clicked". 
+        $scope.toDestination = toDestination;
+        
+        //If no "from origin" has been defined, get pos from user position.
+        //From origin is set if the user searches for a new destination from the menu. 
+        if(!$scope.fromOrigin && $scope.position){
+            $scope.fromOrigin = {lat: $scope.position.lat(), lng: $scope.position.lng()};
+        }
+        console.log("SET Destination. To destination:", toDestination);
+        console.log("FROM origin", $scope.fromOrigin);
+    }
+
     //For routes. 
     $scope.setDestination = function(toDestination){
+        console.log("SET Destination", toDestination);
         $scope.toDestination = toDestination.formatted_address;
         console.log("Calculate route between fromOrigin and toDestination", $scope.fromOrigin, $scope.toDestination);
         NgMap.getMap().then(function(map) {
@@ -159,6 +196,8 @@ app.controller('map-controller', function(NgMap, $cordovaGeolocation, $state, $s
              $scope.$watch('map.directionsRenderers[0].directions', function(newValue, oldValue) {
                 
                 console.log(map);
+                /* Calculate length and load charging stations along the route.
+                */
                 if(newValue){
                     var directions =  map.directionsRenderers[0].directions.routes[0];
                      //Get the path points

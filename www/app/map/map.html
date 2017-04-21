@@ -39,6 +39,7 @@
     					<p>Avstand: <b>{{activeMarker.distance}}</b></p>
     					<p>Antall ladestasjoner: <b>{{activeMarker.cStation.Number_charging_points.value}}</b></p>
     					<button class="btn btn-primary" ng-click="openStation(activeMarker.key)">Mer info <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
+              <button class="btn btn-default" ng-click="getDirectionsToStation(activeMarker)">Vis vei <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
           </div>
   			</div>
   	</info-window>
@@ -69,10 +70,3 @@
   </ng-map>
   
 </div>
-<!--
-<div id="directions-panel" style="width: 100%; float:left; height: 100vh; overflow: auto; padding: 0px 5px">
--->
-
-
-<!--travel-mode="{{travelMode}}"
-          waypoints="{{wayPoints}}" -->
